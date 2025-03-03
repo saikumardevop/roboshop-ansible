@@ -2,6 +2,7 @@
   ansible.builtin.dnf:
     name: nginx
     state: present
+    update_cache: yes
 
 - name: Copy roboshop Config file
   ansible.builtin.copy:
