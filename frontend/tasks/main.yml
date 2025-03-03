@@ -1,7 +1,7 @@
 - name: Install Nginx
   ansible.builtin.dnf:
     name: nginx
-    state: installed
+    state: present
 
 - name: Copy roboshop Config file
   ansible.builtin.copy:
