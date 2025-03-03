@@ -1,5 +1,4 @@
 - name: RoboShop Project Setup
-#  ignore_errors: yes
   hosts: all
   become: yes
   roles:
