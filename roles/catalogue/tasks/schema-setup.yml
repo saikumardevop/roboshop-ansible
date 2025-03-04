@@ -1,0 +1,26 @@
+#func_print_head "Copy MongoDB repo"
+#cp ${script_path}/mongo.repo /etc/yum.repos.d/mongo.repo &>>$log_file
+#func_stat_check $?
+#
+#func_print_head Install  "MongoDB Client"
+#dnf install mongodb-org-shell -y &>>$log_file
+#func_stat_check $?
+#
+#func_print_head "Load Schema "
+#mongo --host mongodb-dev.saikumar22.store </app/schema/${component} &>>$log_file
+#func_stat_check $?
+
+- name: Install MongoDB repo file
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Install MongoDB client
+  ansible.builtin.yum:
+    name: mongodb-org-shell
+    state: installed
+
+- name: Load Schema
+  ansible.builtin.shell: mongo --host {{ lookup{'aws_ssm', "dev.frontend.payment_url', region= 'us-east-1' ) }} </app/schema/{{component}}.js
+
+
