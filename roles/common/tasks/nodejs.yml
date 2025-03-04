@@ -3,7 +3,7 @@
 #func_systemd_setup
 
 - name: Configuring Nodejs repos
-  ansible.builtin.shell: curl -sl https://rpm.nodesource.com/setup_16.x | sudo -E bash
+  ansible.builtin.shell: curl -sl https://rpm.nodesource.com/setup_16.x | sudo -E bash -
 
 - name: Install Nodejs
   ansible.builtin.yum:
@@ -14,11 +14,11 @@
   ansible.builtin.import_tasks:
     file: app_prereq.yml
 
-- name: Install Nodejs depencies
+- name: Install Nodejs dependencies
   ansible.builtin.shell: npm install
   args:
     chdir: /app
 
-- name: Include schema_setup
+- name: Include schema setup
   ansible.builtin.import_tasks:
     file: schema_setup.yml
