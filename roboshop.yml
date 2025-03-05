@@ -2,8 +2,6 @@
   hosts: all
   vars:
     role_name: myrole
+  roles:
+    - "{{ role_name }}"
 
-  tasks:
-    - name: Print role name
-      debug:
-        msg: "The role name is {{ role_name }}"
